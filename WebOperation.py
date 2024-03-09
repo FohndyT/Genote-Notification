@@ -70,7 +70,7 @@ listElements.sort()
 
 list = ""
 
-# Envoie tous les éléments de la liste en json
+# Transforme tous les éléments de la liste en un string
 for i in listElements:
     list += str(i)
     list += " "
