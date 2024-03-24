@@ -1,4 +1,3 @@
-import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -6,12 +5,11 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
-with open('C:\\Users\\fohnd\Documents\Fohndy\GenoteNotification\Texte.txt') as file:
+with open('C:\\Users\\fohnd\Desktop\Fohndy\Ecole\Texte.txt') as file:
     lines = file.readlines()
     lines = [line.strip() for line in lines]
     myUsername = lines[0]
     myPassword = lines[1]
-
 
 # Accède au chrome driver
 s = Service(executable_path=r'C:\\Users\\fohnd\Documents\chromedriver-win64\chromedriver.exe')

@@ -1,5 +1,4 @@
-Import-Module BurntToast
-$imageMuta = "C:\Users\fohnd\Desktop\Fohndy\Muta.png"
+$imageMuta = Join-Path -Path $PSScriptRoot -ChildPath "Muta.png"
 
 # Récupère le profil de connexion
 $connectionProfile = Get-NetConnectionProfile
@@ -11,7 +10,7 @@ $url = "https://www.usherbrooke.ca/genote/application/etudiant/cours.php"
 $connectionUrl = "https://cas.usherbrooke.ca/login?service=https%3A%2F%2Fwww.usherbrooke.ca%2Fgenote%2Fpublic%2Findex.php"
 
 # L'emplacement du fichier d'enregistrement de la page web
-$pageContentFilePath = "C:\Users\fohnd\Desktop\Fohndy\Programmation\Genote notification\GenoteContent.txt"
+$pageContentFilePath = Join-Path -Path $PSScriptRoot -ChildPath "GenoteContent.txt"
 
 # On regarde si on est connecté à un réseau wifi
 if ($null -eq $connectionProfile) 
@@ -21,7 +20,7 @@ if ($null -eq $connectionProfile)
 }
 
 # Accède à la page
-$getPage = (Invoke-WebRequest -Uri $url)
+$getPage = Invoke-WebRequest -Uri $url
 # Récupère le lien de la page sur laquelle nous sommes tombés
 $responsePage = $getPage.BaseResponse.ResponseUri.AbsoluteUri
 
@@ -29,7 +28,7 @@ if($responsePage -eq $url -or $responsePage -eq $connectionUrl)
 {
     # Active l'environnement virtuel de python pour avoir accès à Selenium pour le script python
     $pythonExecutable = "C:\Program Files\Python311\python.exe"
-    $pythonScriptPath = "C:\Users\fohnd\Desktop\Fohndy\Programmation\Genote notification\WebOperation.py"
+    $pythonScriptPath = Join-Path -Path $PSScriptRoot -ChildPath "WebOperation.py"
 
     # Executer le fichier python et récupère la sortie (print())
     $pythonScriptOutput = & $pythonExecutable $pythonScriptPath
